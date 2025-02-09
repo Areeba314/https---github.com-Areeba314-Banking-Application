@@ -1,0 +1,112 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="settings-sidebar">
+            <div class="logo">
+                <!-- Add your logo here if needed -->
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="{{ url_for('language') }}" class="setting-item ">Language</a>
+                <a href="{{ url_for('edit_profile') }}" class="setting-item">My Profile</a>
+                <a href="{{ url_for('contact_us') }}" class="setting-item">Contact Us</a>
+                <a href="{{ url_for('change_password') }}" class="setting-item">Change Password</a>
+                <a href="{{ url_for('privacy_policy') }}" class="setting-item">Privacy Policy</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <div class="settings-content">
+            <!-- Content for the settings page will go here -->
+            <h1>Settings</h1>
+            <p>Manage your preferences and account settings.</p>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.settings-sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.settings-sidebar .logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.settings-sidebar .logo h2 {
+    font-size: 24px;
+    margin: 0;
+  
+}
+
+.settings-list .setting-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.settings-list .setting-item:hover
+{
+    background-color:rgb(35, 133, 231);
+}
+
+.logout {
+    margin-top: 50px;
+}
+
+.logout-button {
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+ 
+}
+
+
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+.settings-content {
+    flex-grow: 1;
+    
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 
+</style>

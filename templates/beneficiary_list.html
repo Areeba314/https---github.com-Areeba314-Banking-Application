@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiaries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* General Reset */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .settings-sidebar {
+            width: 200px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-sidebar .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .settings-sidebar .logo h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .settings-list .setting-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .settings-list .setting-item:hover {
+            background-color:rgb(35, 133, 231);
+        }
+
+        .logout {
+            margin-top: 50px;
+        }
+
+        .logout-button {
+            display: block;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #e74c3c;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Form Section */
+        .form-container {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 300px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            width: 90%;
+        }
+
+        .dropdown-input:hover {
+            border-color: #007bff;
+        }
+
+        .dropdown-input .placeholder {
+            font-size: 14px;
+            color: #666;
+            user-select: none;
+        }
+
+        .dropdown-input .chevron {
+            font-size: 16px;
+            color: #007bff;
+        }
+          
+    .beneficiary-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .beneficiary-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+    
+    .beneficiary-name {
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .arrow {
+        color: #007bff;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .beneficiary-list li:hover {
+        background-color:rgb(209, 212, 212);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="settings-sidebar">
+            <div class="logo">
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="/beneficiaries" class="setting-item">Transfer Money</a>
+                <a href="/add_beneficiary" class="setting-item">Add Beneficiaries</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+        <div class="form-container">
+            <h2>Beneficiary List</h2>
+            <ul class="beneficiary-list">
+                {% for beneficiary in beneficiaries %}
+                    <li onclick="location.href='/transfer_money/{{ beneficiary.id }}';">
+                        <span class="beneficiary-name">{{ beneficiary.account_holder_name }}</span>
+                        <span class="arrow">></span>
+                    </li>
+                {% else %}
+                    <p>No beneficiaries added yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>

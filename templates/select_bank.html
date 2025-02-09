@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Beneficiary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* General Reset */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .settings-sidebar {
+            width: 200px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+       
+.settings-sidebar .logo h2 {
+    font-size: 24px;
+    margin: 0;
+    margin-left:20px;
+    margin-bottom:20px;
+    color: white;
+  
+}
+
+        .settings-list .setting-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .settings-list .setting-item:hover {
+            background-color:rgb(35, 133, 231);
+        }
+
+        .logout {
+            margin-top: 50px;
+        }
+
+        .logout-button {
+            display: block;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #e74c3c;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Form Section */
+        .form-container {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 300px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            width: 90%;
+        }
+
+        .dropdown-input:hover {
+            border-color: #007bff;
+        }
+
+        .dropdown-input .placeholder {
+            font-size: 14px;
+            color: #666;
+            user-select: none;
+        }
+
+        .dropdown-input .chevron {
+            font-size: 16px;
+            color: #007bff;
+        }
+
+
+       
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .bank-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bank-list li {
+            font-size: 18px;
+            color: #555;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .bank-list li:hover {
+            background-color: #007bff;
+            color: #fff;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="settings-sidebar">
+            <div class="logo">
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="/beneficiaries" class="setting-item">Transfer Money</a>
+                <a href="/add_beneficiary" class="setting-item">Add Beneficiary</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-container">
+           
+                <h2>Select a Bank</h2>
+                <ul class="bank-list">
+                    <li onclick="selectBank('Meezan')">Meezan</li>
+                    <li onclick="selectBank('Alfalah')">Alfalah</li>
+                    <li onclick="selectBank('HBL')">HBL</li>
+                    <li onclick="selectBank('MCB')">MCB</li>
+                    <li onclick="selectBank('EasyPaisa')">EasyPaisa</li>
+                    <li onclick="selectBank('JazzCash')">JazzCash</li>
+                </ul>
+          
+    </div>
+
+    <script>
+        /**
+         * Handles bank selection, stores the selected bank in localStorage,
+         * and redirects back to the Add Beneficiary page.
+         *
+         * @param {string} bankName - The name of the selected bank.
+         */
+        function selectBank(bankName) {
+            // Save the selected bank to localStorage
+            localStorage.setItem('selectedBank', bankName);
+
+            // Redirect to the Add Beneficiary page
+            window.location.href = '/add_beneficiary';
+        }
+    </script>
+</body>
+</html>

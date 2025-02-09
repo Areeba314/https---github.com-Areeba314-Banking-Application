@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="settings-sidebar">
+            <div>
+                <div class="logo">
+                    <h2>MYBANK</h2>
+                </div>
+                <div class="settings-list">
+                    <a href="/dashboard" class="setting-item">Home</a>
+                    <a href="{{ url_for('language') }}" class="setting-item ">Language</a>
+                    <a href="{{ url_for('edit_profile') }}" class="setting-item">My Profile</a>
+                    <a href="{{ url_for('contact_us') }}" class="setting-item">Contact Us</a>
+                    <a href="{{ url_for('change_password') }}"class="setting-item">Change Password</a>
+                    <a href="{{ url_for('privacy_policy') }}"class="setting-item">Privacy Policy</a>
+
+
+                 
+                </div>
+            </div>
+            <div>
+                <a href="/logout" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <div class="settings-content">
+            <h1>Select Language</h1>
+            <p>Select your preferred language:</p>
+            <ul class="language-list">
+                <li class="language-item selected" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/us.svg" alt="US Flag"> English</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/pk.svg" alt="Pakistan Flag"> Urdu</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/fr.svg" alt="France Flag"> French</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/es.svg" alt="Spain Flag"> Spanish</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/vn.svg" alt="Vietnam Flag"> Vietnamese</span>
+                    <span class="check-icon">✔</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function selectLanguage(selectedItem) {
+            const items = document.querySelectorAll('.language-item');
+            items.forEach(item => {
+                item.classList.remove('selected');
+            });
+            selectedItem.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+   
+
+    .settings-sidebar {
+        width: 200px;
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .settings-sidebar .logo {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .settings-sidebar .logo h2 {
+        font-size: 24px;
+        margin: 0;
+      
+    }
+
+    .settings-list .setting-item {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .settings-list .setting-item:hover
+    {
+        background-color:rgb(35, 133, 231);
+    }
+
+    .logout {
+        margin-top: 50px;
+    }
+    
+    .logout-button {
+        display: block;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        background-color: #e74c3c;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+     
+    }
+    
+
+    
+    .logout-button:hover {
+        background-color: #c0392b;
+    }
+
+    .settings-content {
+        width:500px;
+        padding: 40px;
+       
+    }
+
+    .settings-content h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .settings-content p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .language-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .language-item {
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s;
+    }
+
+    .language-item img {
+        width: 20px;
+        height: 15px;
+        margin-right: 10px;
+    }
+
+    .language-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .language-item.selected {
+        background-color: #dfe6e9;
+        border-color: #b2bec3;
+    }
+
+    .check-icon {
+        font-weight: bold;
+        color: green;
+        visibility: hidden;
+    }
+
+    .language-item.selected .check-icon {
+        visibility: visible;
+    }
+</style>

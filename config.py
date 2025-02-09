@@ -1,0 +1,1 @@
+DATABASE_URL = "postgresql://postgres:hello123@localhost:5432/banking_app"

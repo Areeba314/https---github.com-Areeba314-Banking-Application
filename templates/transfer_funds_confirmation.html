@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Payment</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        /* General page styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .screen-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .content-box {
+            background: #fff;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+    
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .action-button {
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 480px) {
+            .content-box {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+        .payment-header {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .back-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            outline: none;
+            position: absolute;
+            left: 0;
+            
+        }
+        
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .center-heading {
+            flex-grow: 1; /* Ensures heading takes available space */
+            text-align: center; /* Center-aligns the heading text */
+            margin: 0;
+            margin-top:10px;
+            font-size:25px;
+        }
+        .payment-details{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen-container">
+        <div class="content-box">
+            <div class="payment-header">
+                <!-- Back Button -->
+                <button class="back-button" onclick="window.history.back();">
+                    <span class="arrow-icon">&larr;</span>
+                </button>
+                <h1 class="center-heading">Confirm Payment</h1>
+            </div>
+          
+           <div class="payment-details">
+            <!-- Payment Details -->
+            <p><strong>Beneficiary:</strong> {{ beneficiary.account_holder_name }}</p>
+            <p><strong>Bank:</strong> {{ beneficiary.bank_name }}</p>
+            <p><strong>Account Number:</strong> {{ beneficiary.account_number }}</p>
+            <p><strong>Amount:</strong> PKR {{ transfer_details.amount }}</p>
+            <p><strong>Remarks:</strong> {{ transfer_details.note | default('none') }}</p>
+           </div>
+
+            <!-- Confirmation Form -->
+            <form method="POST" action="{{ url_for('transfer_confirmation', beneficiary_id=beneficiary.id) }}">
+                <button type="submit" class="action-button">Confirm Payment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
