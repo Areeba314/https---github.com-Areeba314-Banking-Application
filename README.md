@@ -3,7 +3,7 @@
 ### Project Description
 
 The MyBank Banking Application is designed to help elderly users manage their finances easily and confidently. Unlike traditional apps that cater to younger users, MyBank focuses on simplicity, accessibility, and user-friendliness.
-It includes features like large fonts, high-contrast themes, and easy navigation to address challenges faced by older individuals. Users can create accounts, manage cards, transfer funds, pay bills, and view transaction history, all through an intuitive interface.
+It includes features like large fonts, high-contrast themes, and easy navigation to address challenges faced by older individuals. Users can create account,add beneficiary,manage account, transfer funds and view transaction history, all through an intuitive interface.
 MyBank promotes financial independence by making digital banking accessible and comfortable for the elderly.
 
 
