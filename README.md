@@ -24,5 +24,20 @@ This project requires PostgreSQL to be installed and running to function correct
 3. Open the browser and go to
  http://localhost:5000
 
+### Screenshots
+![Welcome Screen 1](screenshots/welcome1.jpg)
+![Welcome Screen 2](screenshots/welcome2.jpg)
+![Welcome Screen 3](screenshots/welcome3.jpg)
+![SignIn](screenshots/signIn.png)
+![SignUp](screenshots/signUp.png)
+![Dashboard](screenshots/dashboard.jpg)
+![Add Beneficiary](screenshots/addBeneficiary.png)
+![Beneficiary List](screenshots/beneficiarylist.png)
+![Transfer Funds](screenshots/transferfunds.jpg)
+![Confirm Payment](screenshots/confirmPayment.jpg)
+![Transaction History](screenshots/history.jpg)
+![Settings](screenshots/settings.jpg)
+
+
 
 
